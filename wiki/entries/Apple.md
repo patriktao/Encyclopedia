@@ -1,0 +1,1 @@
+Apple was founded in 1976.

@@ -1,0 +1,17 @@
+#title{
+  position: absolute;
+  margin-top: 10px;
+}
+
+#content {
+  resize: none;
+  width: 650px;
+  height: 500px;
+  margin-top:50px;
+}
+
+#submit_button{
+  position:absolute;
+  left:670px;
+  top:605px;
+}
