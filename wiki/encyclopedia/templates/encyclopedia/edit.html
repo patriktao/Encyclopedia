@@ -8,11 +8,9 @@ Edit Page
 {% block body %}
 <link rel="stylesheet" href="{% static 'encyclopedia/create.css' %}">
 <h1>Edit Page for "{{ title }}"</h1>
-<form action="{% url 'edit' %}" method="post">
+<form action="{% url 'edit' title %}" method="post">
   {% csrf_token %}
-  <div name="content">
-    <textarea id="content" name='text'> {{ text }} </textarea>
-  </div>
-  <input name="button" id="submit_button" type="submit" value="Save Page">
+  {{ form }}
+  <input id="submit_button" type="submit" value="Save Page">
 </form>
 {% endblock %}

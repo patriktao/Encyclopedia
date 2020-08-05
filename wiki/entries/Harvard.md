@@ -1,1 +1,0 @@
-Harvard is a great university.

@@ -9,16 +9,18 @@ from django.http import HttpResponse
 from random import choice
 
 class EditForm(forms.Form):
-    forms.CharField(max_length = 1000)
+    text = forms.CharField(widget=forms.Textarea(
+        attrs={
+        'cols': 6,
+        'rows': 20,
+        'style': 'resize:none; width:600px; height:526px; margin-top: 20px;'
+    }), initial='')
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries" : util.list_entries()})
 
 def entry(request, title):
-    if request.method=="POST":
-        title_entry = request.POST.get('title')
-        return edit(request, title_entry)
     if title not in util.list_entries():
         return HttpResponse("The requested page was not found.")
     else:
@@ -52,10 +54,17 @@ def search(request):
             "text" : markdown2.markdown(util.get_entry(query))
         })
 
-def edit(request, name):
-    context={}
-
+def edit(request, title):
+    content = util.get_entry(title);
+    if request.method == "POST":
+        form = EditForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['text']
+            util.save_entry(title, text)
+            return HttpResponseRedirect(reverse("entry", args=(title,)))
+        else:
+            form = EditForm(initial={content})
     return render(request, 'encyclopedia/edit.html',{
-        'title' : name,
-        'text' : util.get_entry(name)
+        'title': title,
+        'form': form
     })
