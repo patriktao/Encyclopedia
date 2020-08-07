@@ -11,10 +11,8 @@ from random import choice
 class EditForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea(
         attrs={
-        'cols': 6,
-        'rows': 20,
-        'style': 'resize:none; width:600px; height:526px; margin-top: 20px;'
-    }), initial='')
+        'style': 'resize:none; width:650px; height:490px; margin-top: 20px;'
+    }), label ='')
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -55,16 +53,15 @@ def search(request):
         })
 
 def edit(request, title):
-    content = util.get_entry(title);
     if request.method == "POST":
-        form = EditForm(request.POST)
+        form = EditForm(request.POST, initial={'250'})
         if form.is_valid():
             text = form.cleaned_data['text']
             util.save_entry(title, text)
             return HttpResponseRedirect(reverse("entry", args=(title,)))
         else:
-            form = EditForm(initial={content})
+            form = EditForm()
     return render(request, 'encyclopedia/edit.html',{
         'title': title,
-        'form': form
+        'form': form,
     })
