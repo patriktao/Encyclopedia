@@ -45,12 +45,13 @@ def create(request):
     })
 
 def search(request):
-    if request.method=="GET":
-        query = request.GET['q']
-        return render(request, "encyclopedia/entry.html", {
-            "title" : query,
-            "text" : markdown2.markdown(util.get_entry(query))
-        })
+    if request.method=="POST":
+        query = request.POST['q']
+        entries = util.list_entries()
+        return render(request, "encyclopedia/search.html", {
+            "text": markdown2.markdown(util.get_entry(title)),
+            "title": query})
+
 
 def edit(request, title):
     if request.method == "POST":

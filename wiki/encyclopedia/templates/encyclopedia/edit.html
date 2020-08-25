@@ -8,7 +8,7 @@ Edit Page
 {% block body %}
 <link rel="stylesheet" href="{% static 'encyclopedia/create.css' %}">
 <h1>Edit Page for "{{ title }}"</h1>
-<form action="{% url 'edit' title %}" method="post">
+<form action="{% url 'wiki:edit' title %}" method="post">
   {% csrf_token %}
   {{ form }}
   <input id="submit_button2" type="submit" value="Save Page">

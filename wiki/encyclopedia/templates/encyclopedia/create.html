@@ -8,7 +8,7 @@ Create New Page
 {% block body %}
 <link rel="stylesheet" href="{% static 'encyclopedia/create.css' %}">
 <h1>Create New Page</h1>
-<form action="{% url 'create' %}" method="post">
+<form action="{% url 'wiki:create' %}" method="post">
   {% csrf_token %}
   <input name="title" id="title" type="text" placeholder="Title">
   <div name="content">

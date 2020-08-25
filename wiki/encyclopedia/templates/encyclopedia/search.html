@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block body %}
-{{ text|safe }}
-<form method="POST" action="{% url 'wiki:edit' title %}">
+{{ content|safe }}
+<form method="POST" action="{% url 'wiki:edit' %}">
     {% csrf_token %}
    <input class="btn btn-primary btn-sm" type="submit" value="Edit Page">
 </form>
