@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body %}
+<h1>{{ title }}</h1>
 {{ text|safe }}
 <form method="POST" action="{% url 'wiki:edit' title %}">
     {% csrf_token %}

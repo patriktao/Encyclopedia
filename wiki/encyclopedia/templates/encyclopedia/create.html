@@ -10,7 +10,7 @@ Create New Page
 <h1>Create New Page</h1>
 <form action="{% url 'wiki:create' %}" method="post">
   {% csrf_token %}
-  <input name="title" id="title" type="text" placeholder="Title">
+  <input name="title" id='title' type="text" placeholder="Enter your title...">
   <div name="content">
     <textarea id="content" name='text' placeholder="Write your text here..."">{{ content|safe }}</textarea>
   </div>
