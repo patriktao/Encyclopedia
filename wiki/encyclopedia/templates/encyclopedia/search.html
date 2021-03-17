@@ -6,7 +6,7 @@ Search | Encyclopedia
 
 {% block body %}
 
-{% if found_entries %}
+{% if entries != NULL %}
 <h2>Results for "{{ query }}"</h2>
 <ul>
     {% for entry in entries %}

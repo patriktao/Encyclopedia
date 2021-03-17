@@ -42,4 +42,4 @@ def search(query):
     """
     _, filenames = default_storage.listdir("entries")
     return list(sorted(re.sub(r"\.md$", "", filename)
-                    for filename in filenames if filename.endswith(".md") and query in filename.lower()))
+                for filename in filenames if filename.endswith(".md") and query in filename.lower()))
